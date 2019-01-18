@@ -1,5 +1,4 @@
-## 目標
-チャットボットを利用して、ユーザから会話形式で情報を入力してもらいたい
+# Watson Assistant + Node-RED + (LINE) でチャットボット
 
 ## 知識材料 
 - [Watson Assistants](https://www.ibm.com/watson/jp-ja/developercloud/conversation.html)
@@ -10,6 +9,8 @@
 - [Node-RED]
 
 ## 今回のゴール
+チャットボットを利用して、ユーザから会話形式で情報を入力してもらいたい。
+
 LINE アプリを通してサーバ処理を呼び出し、IBM Assistans で会話させる。
 
 | |環境|
