@@ -36,3 +36,8 @@ LINE アプリを通してサーバ処理を呼び出し、IBM Assistans で会�
 
 ## まとめ
 ユーザから、処理に必要な情報を入力させるような「会話」を作成し、それに対するサーバ処理を実装出来そうな予感がしてきた。
+
+## 参考にさせていただきました
+[【2018/11月更新】チャットボットを簡単に作れる！Watson Assistant(旧名: Conversation)の色々なTips（メモ）- Qiita](https://qiita.com/ishida330/items/ae7277598cd3e08fc3a2)
+
+[Watson Assistantのスロット機能の使い方 - Qiita](https://qiita.com/schiyoda/items/a50ea70232382bdcf766)
