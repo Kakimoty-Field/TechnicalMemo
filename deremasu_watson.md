@@ -1,6 +1,9 @@
-# デレマスアイドル人気調査　Twitter + Watson Assistant + Firebase + enebular(infomotion) 
+# そうだ、データの可視化をしよう。Twitter + Watson Assistant + Firebase + enebular infomotion
+
+具体的な手順ではなく、「思い立ったら、データの可視化って結構簡単に出来た」という内容です。
 
 # こんなキャンペーンしてた
+
 ```
 アイマス公式アカウント(@imas_official)を
 フォロー＆ツイートをRTで等身大アイドルパネルを9名にプレゼント
@@ -12,7 +15,7 @@
 
 
 ## ふと思う
-> ... 〇〇ちゃんをカウントしたら、人気ランキングがつくれちゃうんじゃなかろうか。
+> ... 〇〇ちゃんをカウントしたら、誰が倍率高いのか、わかっちゃうかしら。
 
 ## やってみた
 
@@ -21,9 +24,14 @@
 
 
 ## 動機
-- Twitter API あんまり使ったことがない (`statuses/user_timeline.json`  くらい)
+- Twitter API あんまり使ったことがないから試してみたい
+
+   (やったことあるAPI：[statuses/user_timeline.json](https://developer.twitter.com/en/docs/tweets/timelines/api-reference/get-statuses-user_timeline.html)  、 [statuses/show.json](https://developer.twitter.com/en/docs/tweets/post-and-engage/api-reference/get-statuses-show-id) )
+
 - watson をつかってみたい
+
 - データの可視化って楽しそう。
+
 - グラフをお気軽に作るツールを最近知った (`infomotion`)
 
 # 実践
@@ -47,7 +55,8 @@
 ## 各セクションの概要
 
 ### Twitter から対象データ取得
-`search/tweets.json` で、特定のアカウントに対するコメントのみを検索("`q=to%3Aimas_official`")
+[search/tweets.json](https://developer.twitter.com/en/docs/tweets/search/api-reference/get-search-tweets.html) で、特定のアカウントに対するコメントのみを検索("`@imas_official`")
+
 ```
 function search(lastId)
 {
@@ -114,16 +123,43 @@ function search(lastId)
 ```
 ### アイドル名抽出 (watson assistant)
 
-「このアイドルは、こういう呼ばれ方 してるよー」というのを、watson に教えてみた。
+「このアイドルは、こういう呼ばれ方 してるよー」というのを、watson に教えてみる
 
 ![watson](https://dl.dropboxusercontent.com/s/uw7fjb7ztiimimm/20190207-01_03.png)
 
-
+ユニット名をリプライされた場合は、そのユニットのアイドル全員をカウントするようにしてます。
 
 ### 抽出結果をデータストアに保存 (Firebase RealtimeDatabase)
+
+こんなリプライメッセージを、１行ずつ watson に解析してもらう
+
+```
+@imas_official 五十嵐をよろしくお願いします。
+@imas_official 小日向美穂をお願いします！
+@imas_official 島村卯月お願いします
+@imas_official 五十嵐響子ちゃんをお願いしますー
+@imas_official 北条加蓮で
+@imas_official しぶりんをお願いしまｓ
+@imas_official 神谷奈緒！
+@imas_official 北条加蓮ちゃんで！
+@imas_official うじゅき・・・
+　　.
+　　.
+　　.
+```
 
 ![](https://dl.dropboxusercontent.com/s/nqv8d182ouyvo2q/20190207-01_02.png)
 
 
 
+watson の回答を元に、「何時何分に、どのアイドルへリプライがあったか」データをDBに登録していく。
+
+![firebase](https://dl.dropboxusercontent.com/s/3feua1t75r7yn83/20190207-01_04.png)
+
 ### データの可視化 (enebular infomotion)
+
+**どんなタイプのグラフ** を **どんな値を使って** 表示しますか？を指定するだけで、グラフが表示できる。
+
+![](https://dl.dropboxusercontent.com/s/1o74beyc8aw01lf/20190207-01_05.png)
+
+*データソースとして、Firebase Realtime Database を選択できる*
