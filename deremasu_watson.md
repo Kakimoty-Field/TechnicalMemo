@@ -1,6 +1,6 @@
 # そうだ、データの可視化をしよう。Twitter + Watson Assistant + Firebase + enebular infomotion
 
-具体的な手順ではなく、「思い立ったら、データの可視化って結構簡単に出来た」という内容です。
+具体的な手順ではなく、「思いついたら、データの可視化って結構簡単に出来た」という内容です。
 
 # こんなキャンペーンしてた
 
@@ -19,7 +19,7 @@
 
 ## やってみた
 
-![answer](https://dl.dropboxusercontent.com/s/erih5qx8iwcylns/20190207-01_00.png)
+![answer](https://dl.dropboxusercontent.com/s/56fhnenmwsuumiu/20190207-01_06.png)
 *２月５日　１１時〜１７時 くらいの範囲*
 
 
@@ -56,6 +56,8 @@
 
 ### Twitter から対象データ取得
 [search/tweets.json](https://developer.twitter.com/en/docs/tweets/search/api-reference/get-search-tweets.html) で、特定のアカウントに対するコメントのみを検索("`@imas_official`")
+
+その中から、キャンペーン対象のツイートに対するリプライだけを抽出
 
 ```
 function search(lastId)
@@ -152,6 +154,8 @@ function search(lastId)
 watson の回答を元に、「何時何分に、どのアイドルへリプライがあったか」データをDBに登録していく。
 
 ![firebase](https://dl.dropboxusercontent.com/s/3feua1t75r7yn83/20190207-01_04.png)
+
+
 
 ### データの可視化 (enebular infomotion)
 
