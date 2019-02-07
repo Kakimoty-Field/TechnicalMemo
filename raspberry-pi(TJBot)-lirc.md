@@ -123,6 +123,14 @@ dtparam=gpio_out_pin=21
 
 ![recv](https://dl.dropboxusercontent.com/s/ytazruvi13y25ng/20190206-01_01.png)
 
+赤外線センサーにリモコンを向けて、任意のボタンを押します。
+
+コンソールに、押したリモコンのボタン名が表示されることを確認します。
+
+[![S11059](http://img.youtube.com/vi/iWX8cHtGTSE/0.jpg)](https://www.youtube.com/watch?v=iWX8cHtGTSE)
+
+
+
 ## 送信側操作 (irsend)
 
 もう片方のターミナルで、[irsend](http://www.lirc.org/html/irsend.html) コマンドを使用し、リモコンコードを赤外線で送信します。
