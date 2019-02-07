@@ -112,3 +112,18 @@ function search(lastId)
 }
 
 ```
+### アイドル名抽出 (watson assistant)
+
+「このアイドルは、こういう呼ばれ方 してるよー」というのを、watson に教えてみた。
+
+![watson](https://dl.dropboxusercontent.com/s/uw7fjb7ztiimimm/20190207-01_03.png)
+
+
+
+### 抽出結果をデータストアに保存 (Firebase RealtimeDatabase)
+
+![](https://dl.dropboxusercontent.com/s/nqv8d182ouyvo2q/20190207-01_02.png)
+
+
+
+### データの可視化 (enebular infomotion)
