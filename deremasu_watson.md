@@ -60,64 +60,61 @@
 ```
 function search(lastId)
 {
-	var postOption =
-	{
-		'hostname'	: "api.twitter.com",
-		'port'		: 443,
-		'path'		: "/1.1/search/tweets.json"
-						+ "?q=" + "to%3Aimas_official"
-						+ "&result_type=recent" // 最近の
-						+ "&count=100" ,
-		'method'	: "GET",
-		'headers'	:
-			{
-				'Authorization'	: "Bearer " + token, // APIトークンは別枠で取得
-			}
+  var postOption =
+    {
+    'hostname'	: "api.twitter.com",
+    'port'		: 443,
+    'path'		: "/1.1/search/tweets.json"
+        + "?q=" + "to%3Aimas_official"
+        + "&result_type=recent" // 最近の
+        + "&count=100" ,
+    'method'	: "GET",
+    'headers'	:
+      {
+        'Authorization'	: "Bearer " + token, // APIトークンは別枠で取得
+      }
 	};
-	// RT コメントを途中まで読んでいたら、続きから読み込む
-	if( lastId ) 
-		postOption.path += "&max_id=" + lastId;
+  // RT コメントを途中まで読んでいたら、続きから読み込む
+  if( lastId ) 
+    postOption.path += "&max_id=" + lastId;
 
-	// API コール
-	var req = https.request(postOption, function(res)
-		{
-			var ret = '';
-			res.on('data', function(buf)
-				{
-					ret += buf;
-				});
-
-			res.on('end', function()
-				{
-					var currentTweet = JSON.parse(ret);
-					var id = "0";
-					var found = false;
-					// 取得出来たコメントの分、ループ
-					currentTweet.statuses.forEach((x) => 
-					{
-						if( ! /RT/.test(x.text) && repId !== x.id_str ) {
-							// 対象ツイートへのリプライだったら、CSV に吐き出す
-							if( x.in_reply_to_status_id_str === "1092605512250585088" ) {
-								// コメント中の改行コードを削除
-								var tx = x.text.replace(/\n/g, ""); 
-								fs.writeFileSync("a.csv",  
-									(new Date(x.created_at)).getTime()  
-										+ "," + x.id_str 
-										+ "," +  tx + "\r\n"
-									, { flag : "a" });
-									
-								found = true;
-							}
-						}
-						id = x.id_str;
-					});
-
-					if( ! found ) 
-						return ;
-					else 
-						search(id);	// 対象コメントが取得出来ているうちは、再起コール
-				});
-		});
+  // API コール
+  var req = https.request(postOption, function(res)
+    {
+      var ret = '';
+      res.on('data', function(buf)
+        {
+          ret += buf;
+        });
+      res.on('end', function()
+        {
+          var currentTweet = JSON.parse(ret);
+          var id = "0";
+          var found = false;
+          // 取得出来たコメントの分、ループ
+          currentTweet.statuses.forEach((x) => 
+            {
+              if( ! /RT/.test(x.text) && repId !== x.id_str ) {
+                // 対象ツイートへのリプライだったら、CSV に吐き出す
+                if( x.in_reply_to_status_id_str === "1092605512250585088" ) {
+                  // コメント中の改行コードを削除
+                  var tx = x.text.replace(/\n/g, ""); 
+                  fs.writeFileSync("a.csv",  
+                        (new Date(x.created_at)).getTime()  
+                          + "," + x.id_str 
+                          + "," +  tx + "\r\n"
+                          , { flag : "a" });
+                          found = true;
+                }
+              }
+              id = x.id_str;});
+              if( ! found ) 
+                return ;
+              else 
+                search(id);	// 対象コメントが取得出来ているうちは、再起コール
+            });
+     });
+   });
 }
 
 ```
