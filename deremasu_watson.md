@@ -126,11 +126,11 @@ function search(lastId)
 
 ![watson](https://dl.dropboxusercontent.com/s/uw7fjb7ztiimimm/20190207-01_03.png)
 
-ユニット名をリプライされた場合は、そのユニットのアイドル全員をカウントするようにしてます。
+ユニット名をコメントされた場合は、そのユニットのアイドル全員をカウントするようにしてます。
 
 ### 抽出結果をデータストアに保存 (Firebase RealtimeDatabase)
 
-こんなリプライメッセージを、１行ずつ watson に解析してもらう
+こんなメッセージを、１行ずつ watson に解析してもらう
 
 ```
 @imas_official 五十嵐をよろしくお願いします。
@@ -151,7 +151,7 @@ function search(lastId)
 
 
 
-watson の回答を元に、「何時何分に、どのアイドルへリプライがあったか」データをDBに登録していく。
+watson の回答を元に、「何時何分に、誰担当のPからコメントがあったか」データをDBに登録していく。
 
 ![firebase](https://dl.dropboxusercontent.com/s/3feua1t75r7yn83/20190207-01_04.png)
 
