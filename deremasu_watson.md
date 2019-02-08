@@ -1,4 +1,4 @@
-# そうだ、データの可視化をしよう。Twitter + Watson Assistant + Firebase + enebular infomotion
+# そうだ、データの可視化をしよう。
 
 具体的な手順ではなく、「思いついたら、データの可視化って結構簡単に出来た」という内容です。
 
