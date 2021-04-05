@@ -27,6 +27,7 @@ node-red-contrib-model-asset-exchange で物体認識した結果を取得しま
 ## 知識材料 
 - [Node-RED](https://nodered.jp/)
 - [enebular](https://docs.enebular.com/ja/)
+- [node-red-contrib-model-asset-exchange](https://flows.nodered.org/node/node-red-contrib-model-asset-exchange)
 
 ## 利用環境
 - enebular
