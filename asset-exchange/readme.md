@@ -1,3 +1,26 @@
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+
+<!-- code_chunk_output -->
+
+- [目標](#目標)
+  - [知識材料](#知識材料)
+  - [利用環境](#利用環境)
+  - [今回のゴール](#今回のゴール)
+- [環境準備](#環境準備)
+  - [node-red-contrib-model-asset-exchange 追加](#node-red-contrib-model-asset-exchange-追加)
+  - [node-red-contrib-browser-utils 追加](#node-red-contrib-browser-utils-追加)
+  - [node-red-contrib-image-output 追加](#node-red-contrib-image-output-追加)
+- [image-caption-generator (画像概要取得) を試す](#image-caption-generator-画像概要取得-を試す)
+  - [サンプル読み込みとデプロイ](#サンプル読み込みとデプロイ)
+  - [サンプルの実行](#サンプルの実行)
+- [object-detector (物体認識) を試す](#object-detector-物体認識-を試す)
+  - [サンプル読み込みとデプロイ](#サンプル読み込みとデプロイ-1)
+  - [サンプルの実行](#サンプルの実行-1)
+- [まとめ](#まとめ)
+
+<!-- /code_chunk_output -->
+
+
 # 目標
 node-red-contrib-model-asset-exchange で物体認識した結果を取得します
 
@@ -103,5 +126,5 @@ node-red-contrib-model-asset-exchange ノードを利用して、「画像の概
 ![ファイル選択](./img/220.png)
 
 
-## まとめ
+# まとめ
 Node-Red を使って画像認識を簡単に試すことができるということがわかりました。今回は既存のファイルを選択して試しましたが、カメラで撮影した画像をそのまま処理することもできるので、PCやスマホのWebカメラや、TJBot のカメラ入力から物体検出して…という何かが作成できる手ごたえを得ました。
